@@ -1,5 +1,5 @@
 🔧 T-SQL scripts:  
-Include performance tuning, monitoring, automation, T-SQL read/write Excel, and day-to-day SQL Server.
+Include performance tuning, monitoring, automation, T-SQL read/write Excel/csv/json, and daily SQL Server.
 
 🚀 How to Use:  
 Feel free to clone the repository or copy individual scripts.  
