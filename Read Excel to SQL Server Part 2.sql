@@ -1,6 +1,8 @@
 --Read Excel from file system (network shared too) to SQL Server
 --Part 2:
---Create a Excel file as C:\SQL\Test.xlsx with data and column header to test below script:
+
+--Before start,
+--You need to have/create a Excel file as C:\SQL\Test.xlsx (with data and column header) to test below script:
 
 Declare 
 @SourceFullPathFileName NVARCHAR(255)='C:\SQL\', 
@@ -46,3 +48,4 @@ EXECUTE(@SQLStr);
 
 
 END
+
