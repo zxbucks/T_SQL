@@ -1,0 +1,17 @@
+--T-SQL List Database by Sizes
+
+SELECT 
+      database_name = DB_NAME(database_id)
+     ,total_size_GB = CAST(SUM(size) * 8. / 1024/1024  AS DECIMAL(8,2))
+     ,row_size_GB = CAST(SUM(CASE WHEN type_desc = 'ROWS' THEN size END) * 8. / 1024/1024  AS DECIMAL(8,2))
+     ,log_size_GB = CAST(SUM(CASE WHEN type_desc = 'LOG' THEN size END) * 8. / 1024 /1024 AS DECIMAL(8,2))
+	 , (
+	    SELECT COALESCE(CONVERT(VARCHAR(12), MAX(bus.backup_finish_date), 101),'-') AS LastBackUpTime
+		FROM sys.sysdatabases sdb
+		LEFT OUTER JOIN msdb.dbo.backupset bus ON bus.database_name = sdb.name
+		WHERE sdb.Name=DB_NAME(database_id)
+		GROUP BY sdb.Name
+		)  AS LastBackUpTime
+FROM sys.master_files WITH(NOWAIT)
+GROUP BY database_id
+order by 2 desc, 1 asc;
