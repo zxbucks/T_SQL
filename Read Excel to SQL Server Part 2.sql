@@ -1,4 +1,4 @@
---Read Excel from file system (network shared too) to SQL Server
+--Read Excel from file system (or network shared) to SQL Server
 --Part 2:
 
 --Before start,
@@ -42,4 +42,5 @@ PRINT '';
 EXECUTE(@SQLStr);
 
 END
+
 
