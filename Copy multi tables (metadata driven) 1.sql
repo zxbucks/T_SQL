@@ -81,3 +81,4 @@ VALUES
 -- Validate Metadata Configuration
 --============================================================
 SELECT * FROM dbo.TableCopyMeta;
+
